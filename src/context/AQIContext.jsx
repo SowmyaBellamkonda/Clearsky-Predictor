@@ -45,7 +45,7 @@ export const AQIProvider = ({ children }) => {
             setCurrentComponents(data.components);
 
             // Fetch eco-health score in background (non-blocking)
-            fetch(`http://localhost:5000/api/eco-score?lat=${lat}&lon=${lon}`)
+            fetch(`${import.meta.env.VITE_API_URL}/api/eco-score?lat=${lat}&lon=${lon}`)
                 .then(r => r.json())
                 .then(ecoData => { if (!ecoData.error) setEcoScore(ecoData); })
                 .catch(err => console.error('Eco-score fetch error:', err));
